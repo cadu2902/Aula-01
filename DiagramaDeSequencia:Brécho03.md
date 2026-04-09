@@ -9,3 +9,4 @@ S->>B:Procura itens disponiveis à venda
 B-->>S:Mostra itens junto com o preço
 S-->>U:Exibe itens com o preço abaixo
 U->>S:Escolhe item
+S->>B:
