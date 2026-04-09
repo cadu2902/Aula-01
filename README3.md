@@ -1,0 +1,1 @@
+**DiagramaDeSequencia:Doação**
