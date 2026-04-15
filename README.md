@@ -1,2 +1,3 @@
 -[Diagrama de Entidade e Relacionamento]
-(docs/diagrama_er.md)
+(docs/diagram_er.md)
+
