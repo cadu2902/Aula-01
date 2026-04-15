@@ -1,4 +1,3 @@
 -[Diagrama de Entidade e Relacionamento]
-(docs/diagrama_er.md)
-
+(https://raw.githubusercontent.com/ligiaoliveira/Casa-dos-Gatos/main/docs/diagramas/diagrama_er.md)
 
