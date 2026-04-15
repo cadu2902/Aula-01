@@ -1,16 +1,56 @@
-**DiagramaDeSequencia:Doação**
 ```mermaid
-sequenceDiagram
-participant U as Usuario
-participant S as Site
-participant B as BancoDeDados
-U->>S:Escolhe Menu "Doar"
-S-->>U:Exibe Aba "Insira Valor Da Doação"
-U->>S:Insere Valor Em R$
-S->>B:Guarda valor e Pede ID da Conta Bancaria Da ONG
-B-->>S: Envia ID Em Forma De QRcode Para Envio Do Valor
-S-->>U:Exibe QRcode Na Tela Com Mensagem "Escaneie o QRcode Para Enviar a Doação"
-U->>S:Escaneia QRcode
-S->>B: Envia a Transação
-B-->>B:Guarda o Valor No Banco
-S-->>U: Envia Mensagem "Doação Realizada Com Sucesso!"
+classDiagram
+    class Usuario {
+        Nome
+        CPF
+        Email
+        Telefone
+        Endereco
+        DataNascimento
+        cadastrar()
+        fazerLogin()
+    }
+
+    class Voluntario {
+        ContatoEmergencia
+        DiasDisponiveis
+        Habilidades
+        ExperienciaPrevia
+        enviarFormulario()
+    }
+
+    class Gato {
+        Nome
+        Idade
+        Descricao
+        Foto
+        Status
+        exibirCard()
+    }
+
+    class Brecho {
+        NomeItem
+        Preco
+        Descricao
+        Imagem
+        listarProdutos()
+        comprar()
+    }
+
+    class Financeiro {
+        TipoMovimentacao
+        Valor
+        Data
+        gerarRelatorio()
+    }
+
+    class SobreNos {
+        Historia
+        Objetivos
+        exibirConteudo()
+    }
+
+    Usuario "1" -- "0..1" Voluntario : se torna
+    Usuario "1" -- "0..*" Gato : consulta/adota
+    Usuario "1" -- "0..*" Brecho : compra em
+    Financeiro "1" -- "*" Usuario : presta contas
