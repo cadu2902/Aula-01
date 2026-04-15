@@ -1,22 +1,51 @@
 ```mermaid
-sequenceDiagram
-participant U as usuario
-participant App as aplicativo
-participant bend as backend
-participant banco as banco de dados
+erDiagram
+    USUARIO ||--o{ VOLUNTARIO : "se_cadastra"
+    USUARIO ||--o{ ADOCAO_INTERESSE : "tem_interesse"
+    USUARIO ||--o{ PEDIDO_BRECHO : "compra"
+    
+    CATALOGO_GATOS ||--o{ ADOCAO_INTERESSE : "recebe"
+    PRODUTO_BRECHO ||--o{ PEDIDO_BRECHO : "esta_no"
 
-U->>App: Clicar em endereço
-App-->>App: coordenadas(GPS)
-App->>bend: UserID
-bend->>banco: busca ultimas 10 ruas do UserID
-banco-->>bend:Endereços
-bend-->>bend:calcula distancia
-bend-->>App:Historico, distancia
-App-->>U: requisita novo endereço ou existente
-U->>App:seleciona "pesquisar"
-App-->>App:envia notificação para usuarios(motoristas) proximos
-App->>bend:Informações do usuario(nome, local, destino)
-bend->>banco:Requisita UserID dos motoristas proximos
-banco-->>bend: UserID(motoristas)
-bend-->>App: informações dos motoristas(nome, carro, distancia do usuario)
-App-->>U: repassa informações para o usuario
+    USUARIO {
+        info Nome
+        info CPF
+        info Email
+        info Telefone
+        info Endereco
+        info Nascimento
+    }
+
+    VOLUNTARIO {
+        info Contato_Emergencia
+        info Dias_Disponiveis
+        info Habilidades
+        info Experiencia
+        info Disposto_a_Aprender
+    }
+
+    CATALOGO_GATOS {
+        info Nome_Gato
+        info Idade
+        info Descricao
+        info Foto
+        info Status
+    }
+
+    PRODUTO_BRECHO {
+        info Nome_Item
+        info Preco
+        info Descricao
+        info Imagem
+    }
+
+    FINANCEIRO {
+        info Tipo_Movimentacao
+        info Valor
+        info Data
+    }
+
+    CONTEUDO_ONG {
+        info Historia
+        info Objetivos
+    }
